@@ -1,0 +1,3 @@
+app.{{method}}('/api/{{name}}', (req, res) => {
+  res.json({ message: '{{name}} endpoint' });
+});

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Super App Builder</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Super App Builder</h1>
+    <p>Describe your app idea and generate a full project.</p>
+
+    <label for="idea">App Idea</label>
+    <input type="text" id="idea" placeholder="e.g. Task manager for freelancers" />
+
+    <label for="type">App Type</label>
+    <select id="type">
+      <option value="web-app">Web App</option>
+      <option value="mobile-app">Mobile App</option>
+      <option value="api">API Only</option>
+    </select>
+
+    <div class="button-row">
+      <button id="previewBtn">Preview Blueprint</button>
+      <button id="buildBtn">Build Project</button>
+    </div>
+
+    <pre id="output"></pre>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
