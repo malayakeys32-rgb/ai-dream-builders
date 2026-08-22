@@ -46,7 +46,22 @@ primary_region = "sjc"
   auto_start_machines = true`
     });
 
-    // 3. Production server.js
+    // 3. Deployment helper. Credentials remain in the caller's environment.
+    blueprint.files.push({
+      path: `${appName}/deploy-fly.sh`,
+      content: `#!/usr/bin/env sh
+set -eu
+
+: "\${FLY_API_TOKEN:?Set FLY_API_TOKEN before deploying}"
+
+if [ -n "\${APP_SECRET_KEY:-}" ]; then
+  fly secrets set APP_SECRET_KEY="$APP_SECRET_KEY" --app "${appName}"
+fi
+
+fly deploy --app "${appName}"`
+    });
+
+    // 4. Production server.js
     blueprint.files.push({
       path: `${appName}/server.js`,
       content: `const express = require('express');
@@ -67,7 +82,7 @@ app.listen(PORT, () => {
 });`
     });
 
-    // 4. Production package.json
+    // 5. Production package.json
     blueprint.files.push({
       path: `${appName}/package.json`,
       content: JSON.stringify(

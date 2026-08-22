@@ -69,4 +69,4 @@ function generateBlueprint(idea, type) {
     return blueprint;
 }
 
-module.exports = { generateBlueprint };
+mod
